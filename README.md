@@ -29,8 +29,8 @@ These entries were reviewed against the linked public documentation on 2026-10-0
 
 ## Install or package
 
-1. Download or clone this repository.
-2. In PI-Desktop, open **Plugins → Load Development Plugin** and select the `plugin/` directory, or package it with the PI-Desktop plugin devkit and install the resulting `.piplug` file.
+1. For a ready-to-install package, download the latest `.piplug` from [GitHub Releases](https://github.com/vastsa/pi-community-ai-sites/releases/latest). To inspect or modify the source, clone this repository.
+2. Install the package from PI-Desktop's Plugins page, or open **Plugins → Load Development Plugin** and select the `plugin/` directory in your clone.
 3. Review the `provider.register` permission when prompted. It allows the plugin to add provider rows from its manifest.
 4. Enable **PI Community AI Sites**. Open **Settings → Models → Providers**, choose a site's key action, and enter the key you obtained from that site.
 
