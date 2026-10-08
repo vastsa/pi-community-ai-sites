@@ -5,8 +5,9 @@ import { fileURLToPath } from "node:url";
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CATALOG_PATH = resolve(ROOT, "catalog/sites.json");
 const MANIFEST_PATH = resolve(ROOT, "plugin/manifest.json");
-const MAX_PROVIDERS = 8;
 const MAX_MODELS_PER_PROVIDER = 64;
+const MAX_CATEGORY_LENGTH = 128;
+const MAX_DESCRIPTION_LENGTH = 280;
 const API_STYLES = new Set(["chat_completions"]);
 
 function fail(message) {
@@ -47,12 +48,35 @@ function requirePublicHttps(value, label) {
   return url.toString().replace(/\/$/, "");
 }
 
+function validateCategory(category, label) {
+  if (category === undefined) return;
+  if (typeof category === "string") {
+    requireText(category, label, MAX_CATEGORY_LENGTH);
+    return;
+  }
+  if (!category || typeof category !== "object" || Array.isArray(category)) {
+    fail(`${label} must be a string or an object with en and zh-CN labels`);
+  }
+  for (const locale of ["en", "zh-CN"]) {
+    requireText(category[locale], `${label}.${locale}`, MAX_CATEGORY_LENGTH);
+  }
+}
+
+function validateDescription(description, label) {
+  if (!description || typeof description !== "object" || Array.isArray(description)) {
+    fail(`${label} must contain en and zh-CN one-sentence introductions`);
+  }
+  for (const locale of ["en", "zh-CN"]) {
+    requireText(description[locale], `${label}.${locale}`, MAX_DESCRIPTION_LENGTH);
+  }
+}
+
 function validateCatalog(catalog) {
   if (!catalog || catalog.schemaVersion !== 1 || !Array.isArray(catalog.sites)) {
     fail("catalog/sites.json must have schemaVersion 1 and a sites array");
   }
-  if (catalog.sites.length === 0 || catalog.sites.length > MAX_PROVIDERS) {
-    fail(`sites must contain 1..${MAX_PROVIDERS} active providers (PI-Desktop limit)`);
+  if (catalog.sites.length === 0) {
+    fail("sites must contain at least one provider");
   }
 
   const siteIds = new Set();
@@ -64,24 +88,19 @@ function validateCatalog(catalog) {
     }
     siteIds.add(id);
     requireText(site.name, `${label}.name`, 128);
+    validateCategory(site.category, `${label}.category`);
+    validateDescription(site.description, `${label}.description`);
     requirePublicHttps(site.baseUrl, `${label}.baseUrl`);
     if (!API_STYLES.has(site.apiStyle)) {
       fail(`${label}.apiStyle must be one of: ${[...API_STYLES].join(", ")}`);
     }
-    for (const key of ["homeUrl", "signupUrl", "docsUrl", "modelsUrl", "sourceUrl"]) {
+    for (const key of ["homeUrl", "sourceUrl"]) {
       requirePublicHttps(site[key], `${label}.${key}`);
     }
-    const reviewedAt = requireText(site.reviewedAt, `${label}.reviewedAt`, 10);
-    if (
-      !/^\d{4}-\d{2}-\d{2}$/.test(reviewedAt) ||
-      Number.isNaN(Date.parse(`${reviewedAt}T00:00:00Z`)) ||
-      new Date(`${reviewedAt}T00:00:00Z`).toISOString().slice(0, 10) !== reviewedAt
-    ) {
-      fail(`${label}.reviewedAt must be a valid YYYY-MM-DD date`);
-    }
-    requireText(site.accessNote, `${label}.accessNote`, 300);
-    if (!Array.isArray(site.models) || site.models.length === 0 || site.models.length > MAX_MODELS_PER_PROVIDER) {
-      fail(`${label}.models must contain 1..${MAX_MODELS_PER_PROVIDER} model entries`);
+    requireText(site.serviceType, `${label}.serviceType`, 128);
+    requireText(site.registrationNote, `${label}.registrationNote`, 256);
+    if (!Array.isArray(site.models) || site.models.length > MAX_MODELS_PER_PROVIDER) {
+      fail(`${label}.models must contain at most ${MAX_MODELS_PER_PROVIDER} model entries`);
     }
     const modelIds = new Set();
     for (const [modelIndex, model] of site.models.entries()) {
@@ -103,7 +122,7 @@ function manifestFor(sites) {
     schemaVersion: 1,
     id: "community.ai-public-sites",
     name: "PI Community AI Sites",
-    version: "0.1.0",
+    version: "0.3.0",
     description:
       "Community-curated third-party API endpoints. Review each service's privacy and usage terms before sending prompts or code.",
     main: "main.js",
@@ -112,6 +131,8 @@ function manifestFor(sites) {
       providers: sites.map((site) => ({
         id: site.id,
         name: site.name,
+        ...(site.category === undefined ? {} : { category: site.category }),
+        description: site.description,
         baseUrl: site.baseUrl,
         apiStyle: site.apiStyle,
         authKind: "api_key",

@@ -4,15 +4,17 @@
     {
       "id": "hcnsec",
       "name": "幻城网安公益 API",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
       "baseUrl": "https://api.ifivem.com/v1",
       "apiStyle": "chat_completions",
       "homeUrl": "https://api.ifivem.com/",
-      "signupUrl": "https://api.ifivem.com/",
-      "docsUrl": "https://api.ifivem.com/free-api/",
-      "modelsUrl": "https://api.ifivem.com/free-api/models/",
       "sourceUrl": "https://api.ifivem.com/free-api/",
-      "reviewedAt": "2026-10-08",
-      "accessNote": "Registration provides a free quota; check the current free and subscription model groups on the service site.",
+      "serviceType": "社区 API",
+      "registrationNote": "以站点公告为准",
+      "description": {
+        "en": "Provides free quota for individual users; check the site documentation for current models and terms.",
+        "zh-CN": "提供面向个人用户的免费额度，具体模型和使用规则以站点文档为准。"
+      },
       "models": [
         { "id": "DeepSeek-V4-Pro", "name": "DeepSeek V4 Pro" },
         { "id": "DeepSeek-V4-Flash", "name": "DeepSeek V4 Flash" },
@@ -25,19 +27,309 @@
     {
       "id": "chatanywhere",
       "name": "ChatAnywhere Free API",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
       "baseUrl": "https://api.chatanywhere.tech/v1",
       "apiStyle": "chat_completions",
       "homeUrl": "https://chatanywhere.tech/",
-      "signupUrl": "https://chatanywhere.tech/",
-      "docsUrl": "https://github.com/chatanywhere/GPT_API_free",
-      "modelsUrl": "https://github.com/chatanywhere/GPT_API_free",
       "sourceUrl": "https://github.com/chatanywhere/GPT_API_free",
-      "reviewedAt": "2026-10-08",
-      "accessNote": "Free keys are limited to personal, non-commercial use and are subject to service limits and terms.",
+      "serviceType": "社区 API",
+      "registrationNote": "以项目说明为准",
+      "description": {
+        "en": "Free API keys are limited to personal, non-commercial use under the project's terms.",
+        "zh-CN": "提供社区 API，免费 Key 仅限个人非商业用途。"
+      },
       "models": [
         { "id": "gpt-4o-mini", "name": "GPT-4o mini" },
         { "id": "gpt-4o", "name": "GPT-4o" }
       ]
+    },
+    {
+      "id": "anyrouter",
+      "name": "Any Router",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://anyrouter.top/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://anyrouter.top/",
+      "sourceUrl": "https://linux.do/t/topic/1799316",
+      "serviceType": "签到",
+      "registrationNote": "本站2级/国内教育邮箱",
+      "description": {
+        "en": "Check-in credits are available; confirm current signup requirements on the site.",
+        "zh-CN": "通过签到获取额度，具体注册条件以站点公告为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "ark-api",
+      "name": "Ark API",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://windhub.cc/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://windhub.cc/",
+      "sourceUrl": "https://linux.do/t/topic/2048888",
+      "serviceType": "签到&游戏中心",
+      "registrationNote": "LDC购买注册码",
+      "description": {
+        "en": "Combines check-in credits with a game center; signup uses a registration code.",
+        "zh-CN": "结合签到与游戏中心提供额度入口，需注册码注册。"
+      },
+      "models": []
+    },
+    {
+      "id": "shuo",
+      "name": "『烁』公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://elysiver.h-e.top/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://elysiver.h-e.top/",
+      "sourceUrl": "https://linux.do/t/topic/1175087",
+      "serviceType": "签到&游戏&LDC",
+      "registrationNote": "可注册",
+      "description": {
+        "en": "Open registration with check-in, game, and LDC community features.",
+        "zh-CN": "支持直接注册，包含签到、游戏与 LDC 等入口。"
+      },
+      "models": []
+    },
+    {
+      "id": "hybgzs",
+      "name": "黑与白公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://ai.hybgzs.com/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://ai.hybgzs.com/",
+      "sourceUrl": "https://linux.do/t/topic/1861721",
+      "serviceType": "福利站",
+      "registrationNote": "邀请码",
+      "description": {
+        "en": "An invite-based community API service; check the site for current access.",
+        "zh-CN": "邀请码开放的福利型 API 服务，当前规则以站点公告为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "api-42w",
+      "name": "42 API",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.42w.shop/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.42w.shop/",
+      "sourceUrl": "https://linux.do/t/topic/1770113",
+      "serviceType": "未注明",
+      "registrationNote": "未注明",
+      "description": {
+        "en": "A community-shared API service; see the linked post for current access details.",
+        "zh-CN": "社区分享的 API 服务，接入方式以站点公告和来源帖为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "wong",
+      "name": "WONG的公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://wzw.pp.ua/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://wzw.pp.ua/",
+      "sourceUrl": "https://linux.do/u/jason_wong1",
+      "serviceType": "未注明",
+      "registrationNote": "邀请码",
+      "description": {
+        "en": "An invite-based community API service.",
+        "zh-CN": "邀请码开放的社区 API 站点。"
+      },
+      "models": []
+    },
+    {
+      "id": "mint",
+      "name": "薄荷公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://x666.me/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://x666.me/",
+      "sourceUrl": "https://linux.do/t/topic/1170760",
+      "serviceType": "未注明",
+      "registrationNote": "注册码",
+      "description": {
+        "en": "A community API service that uses registration codes; check the source post for current access.",
+        "zh-CN": "注册码注册的社区 API 服务，开放状态以来源帖为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "dudu",
+      "name": "dudu公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://wududu.edu.kg/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://wududu.edu.kg/",
+      "sourceUrl": "https://linux.do/t/topic/1808197",
+      "serviceType": "未注明",
+      "registrationNote": "关闭注册",
+      "description": {
+        "en": "Registration was listed as closed; check the site for its current status.",
+        "zh-CN": "原整理信息显示暂未开放注册，最新状态请查看站点公告。"
+      },
+      "models": []
+    },
+    {
+      "id": "coeeapi",
+      "name": "CoeeApi",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.coee.ccwu.cc/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.coee.ccwu.cc/",
+      "sourceUrl": "https://linux.do/t/topic/2139599",
+      "serviceType": "未注明",
+      "registrationNote": "邀请码",
+      "description": {
+        "en": "An invite-based community API service.",
+        "zh-CN": "邀请码开放的社区 API 站点。"
+      },
+      "models": []
+    },
+    {
+      "id": "prismai",
+      "name": "PrismAI 公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://ai.prism.uno/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://ai.prism.uno/",
+      "sourceUrl": "https://linux.do/t/topic/2285158",
+      "serviceType": "LDC",
+      "registrationNote": "可注册",
+      "description": {
+        "en": "An API service for the LDC community; check the site for current access.",
+        "zh-CN": "面向 LDC 社区的 API 服务，开放方式以站点公告为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "zifeiyu",
+      "name": "zifeiyu公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://ai.112102.xyz/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://ai.112102.xyz/",
+      "sourceUrl": "https://linux.do/t/topic/2536586",
+      "serviceType": "未注明",
+      "registrationNote": "关闭注册",
+      "description": {
+        "en": "Registration was listed as closed; check the site for its current status.",
+        "zh-CN": "原整理信息显示暂未开放注册，最新状态请查看站点公告。"
+      },
+      "models": []
+    },
+    {
+      "id": "hlool",
+      "name": "Hlool 公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.hlool.top/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.hlool.top/",
+      "sourceUrl": "https://linux.do/t/topic/2489666",
+      "serviceType": "未注明",
+      "registrationNote": "LDC购买邀请码",
+      "description": {
+        "en": "Signup uses an LDC invitation code; check the linked post for current rules.",
+        "zh-CN": "通过 LDC 邀请码注册的社区 API 站点，规则以来源帖为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "xiaojimao",
+      "name": "小鸡毛公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.ark717.com/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.ark717.com/",
+      "sourceUrl": "https://linux.do/t/topic/2583676",
+      "serviceType": "未注明",
+      "registrationNote": "目前随缘限量免费发放",
+      "description": {
+        "en": "Free access is distributed in limited batches; check the linked post for updates.",
+        "zh-CN": "按名额不定期发放免费资格，具体安排以来源帖为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "runanytime",
+      "name": "随时跑路公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://runanytime.hxi.me/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://runanytime.hxi.me/",
+      "sourceUrl": "https://linux.do/t/topic/1833597",
+      "serviceType": "未注明",
+      "registrationNote": "注册码",
+      "description": {
+        "en": "A community API service that uses registration codes.",
+        "zh-CN": "需注册码注册的社区 API 站点。"
+      },
+      "models": []
+    },
+    {
+      "id": "panmao",
+      "name": "胖猫公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://我是胖猫.de5.net/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://我是胖猫.de5.net/",
+      "sourceUrl": "https://linux.do/t/topic/2764312",
+      "serviceType": "福利站",
+      "registrationNote": "可注册",
+      "description": {
+        "en": "A benefit-style community API service with open registration listed in the source.",
+        "zh-CN": "原整理信息显示可直接注册，福利内容以站点公告为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "site-773",
+      "name": "773公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api-yi-hydrogel.seeseed1ck.icu/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api-yi-hydrogel.seeseed1ck.icu/",
+      "sourceUrl": "https://linux.do/t/topic/2713274",
+      "serviceType": "签到",
+      "registrationNote": "注册码",
+      "description": {
+        "en": "Check-in credits are available with registration-code signup.",
+        "zh-CN": "提供签到额度，需注册码注册。"
+      },
+      "models": []
+    },
+    {
+      "id": "fengwind",
+      "name": "【Fengwind API】公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.fengwind.com/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.fengwind.com/",
+      "sourceUrl": "https://linux.do/t/topic/2581884",
+      "serviceType": "福利站",
+      "registrationNote": "邀请码",
+      "description": {
+        "en": "An invite-based benefit service; check the linked post for current access.",
+        "zh-CN": "邀请制福利型 API 站点，开放状态以来源帖为准。"
+      },
+      "models": []
+    },
+    {
+      "id": "gugugaga",
+      "name": "咕咕嘎嘎公益站",
+      "category": { "en": "Community API Sites", "zh-CN": "公益站" },
+      "baseUrl": "https://api.fengshao1227.com/",
+      "apiStyle": "chat_completions",
+      "homeUrl": "https://api.fengshao1227.com/",
+      "sourceUrl": "https://linux.do/t/topic/2775282",
+      "serviceType": "签到",
+      "registrationNote": "注册码",
+      "description": {
+        "en": "Check-in credits are available with registration-code signup.",
+        "zh-CN": "提供签到额度，需注册码注册。"
+      },
+      "models": []
     }
   ]
 }

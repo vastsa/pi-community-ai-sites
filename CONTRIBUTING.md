@@ -1,37 +1,37 @@
 # Contributing
 
-Pull requests are welcome. Please add stations only when their public documentation identifies the endpoint, API format, and exact model IDs.
+Community pull requests are welcome. Please check the linked source before changing a site's address or access note.
 
-## Station requirements
+## Add or update a site
 
-- Link to the service's home page, signup page, API documentation, model list, and the source used to verify the entry.
-- Use a public HTTPS endpoint copied from the service's documentation. Do not guess a URL, use an IP address, point at localhost/private networks, or add URL credentials.
-- Use a non-referral signup URL. Do not add affiliate, invite, or tracking parameters.
-- Include only exact model IDs published by the service. Do not list models that require a paid tier as free.
-- Record the review date and a short access note. Do not state that an entry is safe, stable, or permanently free.
-- Never submit API keys, cookies, access tokens, or other credentials.
-- Do not add a shared public key or a service that asks users to share credentials from another provider.
-- Keep the active catalog at eight entries or fewer, matching the current PI-Desktop plugin limit.
-- Provider IDs also identify rows that own user API keys. If ownership or the endpoint host changes, add a new ID; changing `baseUrl` under an existing ID retains the user's key and redirects later requests to the new host.
-- Removing a provider ID deletes its row and saved key when PI-Desktop reconciles the plugin. Call out removals clearly in the PR and keep them rare.
+Edit `catalog/sites.json`. Each entry includes:
 
-The maintainer reviews the endpoint and model details before merge. A link being reachable does not verify a service's privacy claims, uptime, or quota policy.
+- A stable, unique `id`. It identifies the Host provider row and its saved API key.
+- The displayed `name`, optional localized `category`, and a one-sentence localized `description` for the Add provider chooser. Category labels are at most 128 characters; descriptions are at most 280 characters per locale.
+- A public HTTPS `baseUrl`, a `homeUrl`, and a `sourceUrl` that explains or tracks the listing.
+- The supplied `serviceType` and `registrationNote`, with `未注明` when the source does not say.
+- `models`: exact published model IDs when a trustworthy list is available, or an empty array when the endpoint supports key-authenticated model discovery.
 
-## Change the catalog
+Do not guess endpoints or model IDs, and do not probe a live service as part of review. Use the linked public documentation or source post. Access rules, registration state, quotas, and availability can change; phrase descriptions briefly and point to the source rather than promising service quality.
 
-Edit `catalog/sites.json`, then regenerate and validate the manifest:
+Use clean links without affiliate, invitation, or tracking parameters. Never submit API keys, cookies, access tokens, or other credentials. Do not add a shared key or a service that asks users to share credentials from another provider.
+
+There is no site-count limit. Keep the custom chooser category consistent when the entries belong together. If ownership or the API hostname changes, use a new `id`: changing the endpoint under an existing ID retains the user's saved key and sends it to the new host. Removing an ID removes its provider row and saved key when PI-Desktop reconciles the plugin; call out removals in the pull request.
+
+## Generate and validate
 
 ```sh
 node scripts/catalog.mjs write
 node scripts/catalog.mjs check
 ```
 
-The generated `plugin/manifest.json` must be committed with the catalog change. The GitHub Actions workflow also runs the PI-Desktop plugin devkit check and pack commands.
+Commit the generated `plugin/manifest.json` with the catalog change. The GitHub Actions workflow also runs the PI-Desktop plugin devkit checks and package command. For a local development install, select the `plugin/` directory because that is where `manifest.json` lives.
 
 ## Pull request checklist
 
-- [ ] I included public source links for the endpoint, API format, and model IDs.
-- [ ] I recorded when I reviewed the service documentation.
-- [ ] I did not include referral parameters, credentials, or private data.
+- [ ] The site and source links are public HTTPS links without tracking parameters.
+- [ ] The description is one sentence in English and Simplified Chinese.
+- [ ] I used published model IDs or left `models` empty for documented model discovery.
+- [ ] I did not include credentials or private data.
 - [ ] I regenerated `plugin/manifest.json` and ran the catalog check.
-- [ ] I read the service's current terms and noted material access limits.
+- [ ] I explained endpoint or provider-ID changes that may affect saved keys.
