@@ -1,0 +1,52 @@
+name: Validate plugin
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this plugin repository
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          version: 12.8.1
+          runtime: node@22.19.0
+          install: false
+
+      - name: Validate catalog and generated manifest
+        run: node scripts/catalog.mjs check
+
+      - name: Check out PI-Desktop plugin tooling
+        uses: actions/checkout@v6
+        with:
+          repository: vastsa/PI-Desktop
+          ref: main
+          path: tools/pi-desktop
+
+      - name: Install plugin tooling dependencies
+        working-directory: tools/pi-desktop
+        run: >-
+          pnpm install --frozen-lockfile
+          --filter @pi-desktop/plugin-sdk...
+          --filter @pi-desktop/plugin-devkit...
+
+      - name: Build plugin tooling
+        working-directory: tools/pi-desktop
+        run: |
+          pnpm --filter @pi-desktop/plugin-sdk build
+          pnpm --filter @pi-desktop/plugin-devkit build
+
+      - name: Check and package plugin
+        run: |
+          node tools/pi-desktop/packages/plugin-devkit/dist/cli.js check plugin
+          node tools/pi-desktop/packages/plugin-devkit/dist/cli.js pack plugin --out .artifacts
